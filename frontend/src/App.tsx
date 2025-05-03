@@ -13,6 +13,7 @@ import RainbowBox from "./RainbowBox";
 
 function App() {
   const [noCount, setNoCount] = useState(0);
+  const [isTeethClean, setIsTeethClean] = useState(true);
 
   const account = useCurrentAccount();
   const wallets = useWallets();
@@ -88,7 +89,14 @@ function App() {
               <img className="w-45 h-auto" src="/banner-img1.png" />
             </div>
             <div className="flex flex-col justify-center items-center -space-y-5">
-              <img className="h-auto w-full z-10" src="/clean-up.png" />
+              {isTeethClean ? (
+                <img className="h-60 w-full z-10" src="/clean-up.png" />
+              ) : (
+                <img
+                  className="h-60 w-full z-10 object-cover object-top"
+                  src="/dirty-up.png"
+                />
+              )}
               <div className="bg-slate-700 border-2 p-5 border-black z-100 flex justify-center items-center">
                 <div className="flex flex-col justify-center items-center ">
                   <p className="text-4xl font-bold ">
@@ -118,7 +126,14 @@ function App() {
                   </div>
                 </div>
               </div>
-              <img className="h-auto w-full z-10" src="/clean-down.png" />
+              {isTeethClean ? (
+                <img className="h-60 w-full z-10" src="/clean-down.png" />
+              ) : (
+                <img
+                  className="h-60 w-full z-10 object-cover object-bottom"
+                  src="/dirty-down.png"
+                />
+              )}
             </div>
             <div>
               <p className="text-red-500">
