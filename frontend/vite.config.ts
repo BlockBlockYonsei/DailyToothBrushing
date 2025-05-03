@@ -6,6 +6,9 @@ import path from "path";
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react(), tailwindcss()],
+  build: {
+    chunkSizeWarningLimit: 2000, // 단위: KB (기본값: 500KB)
+  },
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),

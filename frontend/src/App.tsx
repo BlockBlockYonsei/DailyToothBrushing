@@ -99,9 +99,10 @@ function App() {
         </nav>
         {account && (
           <div className="">
-            <div className="flex justify-between">
-              <div>
-                <p>text pox</p>
+            <div className="flex justify-between bg-gray-800 text-red-500">
+              <div className="w-full flex flex-col justify-center items-center">
+                <p className="text-4xl">Ready to join dental arena?</p>
+                <p>click here to enter the dungeon of tooth battle</p>
               </div>
               <img className="w-45 h-auto" src="/banner-img1.png" />
             </div>
