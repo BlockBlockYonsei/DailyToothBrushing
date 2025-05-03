@@ -7,44 +7,25 @@ import {
   useWallets,
   useSignAndExecuteTransaction,
 } from "@mysten/dapp-kit";
-// import { useLocation } from "react-router-dom";
-// import { useNavigate } from "react-router-dom";
 
 import { Transaction } from "@mysten/sui/transactions";
-// import { getFullnodeUrl, SuiClient } from "@mysten/sui/client";
-// import { WebCryptoSigner } from "@mysten/signers/webcrypto";
-
-// const client = new SuiClient({ url: getFullnodeUrl("testnet") });
+import RainbowBox from "./RainbowBox";
 
 function App() {
   const [noCount, setNoCount] = useState(0);
-  const [digest, setDigest] = useState("");
 
   const account = useCurrentAccount();
   const wallets = useWallets();
-  // const location = useLocation();
-  // const navigate = useNavigate();
 
   const { mutate: disconnect } = useDisconnectWallet();
   const { mutate: connect } = useConnectWallet();
   const { mutate: signAndExecuteTransaction } = useSignAndExecuteTransaction();
 
   useEffect(() => {
-    console.log("digest", digest);
-  }, [digest]);
-
-  useEffect(() => {
-    console.log("digest", noCount);
+    console.log("no count", noCount);
   }, [noCount]);
 
-  useEffect(() => {
-    // console.log("wallet", wallets);
-    console.log("account", account?.chains);
-  }, [wallets, account]);
-
   const onYesButtonClick = async () => {
-    // const keypair = await WebCryptoSigner.generate();
-
     const tx = new Transaction();
     const PACKAGE_ID =
       "0x2ea277f1ee7e6fb18a7dc4bff2f84773204ad2a89cfb7e931633b9d428870bd7";
@@ -54,20 +35,14 @@ function App() {
       arguments: [tx.object.clock()],
     });
 
-    // await tx.build({ client });
-
-    console.log("tx", tx);
-    // client.signAndExecuteTransaction({ transaction: tx, signer: keypair });
     signAndExecuteTransaction(
       {
         transaction: tx,
-        // chain: "sui:testnet",
-        chain: account?.chains[0],
+        chain: "sui:testnet",
       },
       {
         onSuccess: (result) => {
-          console.log("executed transaction", result);
-          setDigest(result.digest);
+          console.log("success", result);
         },
         onError: (error) => {
           console.log("Error", error);
@@ -106,7 +81,9 @@ function App() {
             <div className="flex justify-between bg-gray-800 text-red-500">
               <div className="w-full flex flex-col justify-center items-center">
                 <p className="text-4xl">Ready to join dental arena?</p>
-                <p>click here to enter the dungeon of tooth battle</p>
+                <p className="cursor-pointer">
+                  click here to enter the dungeon of tooth battle
+                </p>
               </div>
               <img className="w-45 h-auto" src="/banner-img1.png" />
             </div>
@@ -120,14 +97,14 @@ function App() {
                   </p>
                   <div className="flex justify-around items-center w-[200px]">
                     <Button
-                      className="hover:bg-amber-200 text-4xl text-red-600 active:bg-amber-300 cursor-pointer"
+                      className="text-4xl text-red-600 active:bg-amber-300 cursor-pointer"
                       onClick={onYesButtonClick}
                     >
                       Yes
                     </Button>
                     <p className="text-4xl text-white">/</p>
                     <Button
-                      className="hover:bg-amber-200 text-4xl text-cyan-600 active:bg-amber-300 cursor-pointer"
+                      className="text-4xl text-cyan-600 active:bg-amber-300 cursor-pointer"
                       // onClick={() => navigate("/another")}
                       onClick={() => {
                         setNoCount((prev) => prev + 1);
@@ -160,7 +137,7 @@ function App() {
               <img className="w-auto h-full" src="/brush2.png" />
               <img className="w-auto h-full" src="/brush3.png" />
             </div>
-            <RainbowBox></RainbowBox>
+            <RainbowBox />
             <div className="flex justify-between h-[200px]">
               <img
                 className="border-2 border-black w-auto h-full"
@@ -216,6 +193,14 @@ function App() {
                 </li>
               </ul>
             </div>
+            <button
+              className="cursor-pointer"
+              onClick={() => {
+                window.open("https://x.com/toothfairysui", "_blank");
+              }}
+            >
+              <img src="/follow-us-x.png" />
+            </button>
           </div>
         )}
       </div>
@@ -225,50 +210,3 @@ function App() {
 }
 
 export default App;
-
-function RainbowBox() {
-  return (
-    <>
-      <div
-        className="min-h-[600px] w-full mx-auto p-8 rounded-lg 
-                      bg-gradient-to-b from-red-500  via-yellow-300 
-                     to-violet-500 
-                      text-white text-[1.2em] leading-tight"
-      >
-        <h1 className="text-black text-4xl text-center mb-4 font-playwrite">
-          History
-        </h1>
-        <p className="underline font-playwrite">
-          Teeth-cleaning twigs have long been used throughout human history.[3]
-          As long ago as 3000 B.C., the ancient Egyptians constructed crude
-          toothbrushes from twigs and leaves to clean their teeth. Similarly,
-          other cultures such as the Greeks, Romans, Arabs and Indians also
-          cleaned their teeth with twigs. Some would fray one end of the twig so
-          that it could penetrate between the teeth more effectively. In the
-          Islamic prophetic tradition, Muhammad taught his disciples to brush
-          their teeth using miswak five times per day, and this remains
-          prevalent amongst many Muslims world wide since 610 A.D.[4] The Indian
-          method of using wood for brushing was presented by the Chinese Monk
-          Yijing (635–713 A.D.) when he described the rules for monks in his
-          book:[5] Every day in the morning, a monk must chew a piece of tooth
-          wood to brush his teeth and scrape his tongue, and this must be done
-          in the proper way. Only after one has washed one's hands and mouth may
-          one make salutations. Otherwise both the saluter and the saluted are
-          at fault. In Sanskrit, the tooth wood is known as the
-          dantakastha—danta meaning tooth, and kastha, a piece of wood. It is
-          twelve finger-widths in length. The shortest is not less than eight
-          finger-widths long, resembling the little finger in size. Chew one end
-          of the wood well for a long while and then brush the teeth with it.
-          Brushing teeth with chewing stick. Modern-day tooth brushing as a
-          regular habit became prevalent in Europe from the end of the 17th
-          century. The first mass-produced toothbrush was developed in England
-          in 1780 by William Addis. In the United States, although toothbrushes
-          were available at the end of the 19th century, the practice did not
-          become widespread until after the Second World War, when US soldiers
-          continued the tooth brushing that had been required during their
-          military service.[6]
-        </p>
-      </div>
-    </>
-  );
-}
