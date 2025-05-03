@@ -10,10 +10,15 @@ import {
 
 import { Transaction } from "@mysten/sui/transactions";
 import RainbowBox from "./RainbowBox";
+import { useGetMyToothBruhsing } from "./hooks/toothbruhsing";
+import { PACKAGE_ID } from "./Constants";
+import { ToothBruhsingObjectData } from "./types/toothbruhsing";
 
 function App() {
   const [noCount, setNoCount] = useState(0);
-  const [isTeethClean, setIsTeethClean] = useState(true);
+  const [isTeethClean, setIsTeethClean] = useState(false);
+  const [recentToothBruhsing, setRecentToothBruhsing] =
+    useState<ToothBruhsingObjectData>();
 
   const account = useCurrentAccount();
   const wallets = useWallets();
@@ -22,17 +27,45 @@ function App() {
   const { mutate: connect } = useConnectWallet();
   const { mutate: signAndExecuteTransaction } = useSignAndExecuteTransaction();
 
+  const { toothbruhsings } = useGetMyToothBruhsing({
+    owner: account ? account.address : "",
+  });
+
   useEffect(() => {
     console.log("no count", noCount);
   }, [noCount]);
 
+  useEffect(() => {
+    if (toothbruhsings && toothbruhsings.length > 0) {
+      setRecentToothBruhsing(toothbruhsings[0]);
+    }
+  }, [toothbruhsings]);
+
+  useEffect(() => {
+    if (recentToothBruhsing) {
+      console.log("recent", recentToothBruhsing);
+      const timestampMs = Date.now();
+      const eightHours = 8 * 60 * 60 * 1000;
+
+      if (
+        timestampMs >
+        Number(recentToothBruhsing.content.fields.timestamp) + eightHours
+      ) {
+        console.log("oh shit");
+        setIsTeethClean(false);
+      } else {
+        console.log("oh yes");
+        setIsTeethClean(true);
+      }
+    }
+  }, [recentToothBruhsing]);
+
   const onYesButtonClick = async () => {
+    if (!account) return;
     const tx = new Transaction();
-    const PACKAGE_ID =
-      "0x2ea277f1ee7e6fb18a7dc4bff2f84773204ad2a89cfb7e931633b9d428870bd7";
 
     tx.moveCall({
-      target: `${PACKAGE_ID}::toothburshing::brush_my_teeth`,
+      target: `${PACKAGE_ID}::toothbruhsing::brush_my_teeth`,
       arguments: [tx.object.clock()],
     });
 
@@ -44,6 +77,7 @@ function App() {
       {
         onSuccess: (result) => {
           console.log("success", result);
+          window.location.reload();
         },
         onError: (error) => {
           console.log("Error", error);
