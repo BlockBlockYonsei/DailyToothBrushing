@@ -16,6 +16,7 @@ import { ToothBruhsingObjectData } from "./types/toothbruhsing";
 
 function App() {
   const [noCount, setNoCount] = useState(0);
+  const [timeSinceLastBruhsing, setTimeSinceLastBruhsing] = useState(0);
   const [isTeethClean, setIsTeethClean] = useState(false);
   const [recentToothBruhsing, setRecentToothBruhsing] =
     useState<ToothBruhsingObjectData>();
@@ -59,6 +60,29 @@ function App() {
       }
     }
   }, [recentToothBruhsing]);
+  useEffect(() => {
+    if (recentToothBruhsing) {
+      const interval = setInterval(() => {
+        const diff =
+          Date.now() - Number(recentToothBruhsing.content.fields.timestamp);
+        setTimeSinceLastBruhsing(diff > 0 ? diff : 0);
+      }, 1000);
+      return () => clearInterval(interval);
+    }
+  }, [recentToothBruhsing]);
+
+  const formatTime = (ms: number) => {
+    const totalSeconds = Math.floor(ms / 1000);
+    const hours = Math.floor(totalSeconds / 3600)
+      .toString()
+      .padStart(2, "0");
+    const minutes = Math.floor((totalSeconds % 3600) / 60)
+      .toString()
+      .padStart(2, "0");
+    const seconds = (totalSeconds % 60).toString().padStart(2, "0");
+
+    return `${hours}:${minutes}:${seconds}`;
+  };
 
   const onYesButtonClick = async () => {
     if (!account) return;
@@ -160,14 +184,28 @@ function App() {
                   </div>
                 </div>
               </div>
-              {isTeethClean ? (
-                <img className="h-60 w-full z-10" src="/clean-down.png" />
-              ) : (
-                <img
-                  className="h-60 w-full z-10 object-cover object-bottom"
-                  src="/dirty-down.png"
-                />
-              )}
+              <div className="relative">
+                {isTeethClean ? (
+                  <div>
+                    <img className="h-60 w-full z-10" src="/clean-down.png" />
+                    <div className="absolute top-0 left-0 flex justify-center items-center h-full w-full">
+                      <div className="text-4xl font-bold">
+                        <span className="text-amber-700 ">
+                          Time Since Last Bruhsing :{" "}
+                        </span>
+                        <span className="text-red-500">
+                          {formatTime(timeSinceLastBruhsing)}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                ) : (
+                  <img
+                    className="h-60 w-full z-10 object-cover object-bottom"
+                    src="/dirty-down.png"
+                  />
+                )}
+              </div>
             </div>
             <div>
               <p className="text-red-500">
