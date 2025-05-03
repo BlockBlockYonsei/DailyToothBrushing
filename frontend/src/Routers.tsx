@@ -6,6 +6,7 @@ import {
 } from "react-router-dom";
 import App from "./App";
 import Layout from "./Layout";
+import AnotherPage from "./AnotherPage";
 
 export default function Routers() {
   return (
@@ -19,6 +20,7 @@ export default function Routers() {
           }
         >
           <Route path="/" element={<App />}></Route>
+          <Route path="/another" element={<AnotherPage />}></Route>
         </Route>
       </Routes>
     </Router>

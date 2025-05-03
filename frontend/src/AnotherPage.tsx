@@ -11,7 +11,7 @@ import { Link } from "lucide-react";
 import { navigateWithQuery } from "./lib/utils";
 import { useNavigate } from "react-router-dom";
 
-function App() {
+function AnotherPage() {
   const [noCount, setNoCount] = useState(0);
   const account = useCurrentAccount();
   const wallets = useWallets();
@@ -46,24 +46,10 @@ function App() {
             </div>
           )}
         </nav>
-        <div>Daily Tooth Brushing</div>
-        {/* <div className="flex border-2 border-black"> */}
-        <div className="flex min-h-45 w-full border-2 border-black items-center justify-around">
-          <Button className="hover:bg-amber-200 active:bg-amber-300 w-45 border-2 border-black cursor-pointer">
-            Yes
-          </Button>
-          <Button
-            className="hover:bg-amber-200 active:bg-amber-300 w-45 border-2 border-black cursor-pointer"
-            // onClick={() => navigate("/another")}
-            onClick={() => window.open("/another", "_blank")}
-          >
-            No
-          </Button>
-        </div>
+        <div>Another Page</div>
       </div>
-      {/* </div> */}
     </>
   );
 }
 
-export default App;
+export default AnotherPage;
