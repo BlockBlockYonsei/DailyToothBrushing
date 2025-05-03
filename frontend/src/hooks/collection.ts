@@ -1,13 +1,7 @@
-// import {
-//   parseCollectionObjectData,
-//   parseDynamicBaseTypeField,
-// } from "@/lib/collection";
-// import { CollectionData } from "@/types/collection";
 import { getFullnodeUrl, SuiClient } from "@mysten/sui/client";
 import { useEffect, useState } from "react";
 
 export const useGetMyCollections = ({ owner }: { owner: string }) => {
-  // const [collections, setCollecitons] = useState<CollectionData[]>([]);
   const [toothbrusings, setToothBrushings] = useState<any>(null);
   const [isPending, setIsPending] = useState<boolean>(true);
   const [error, setError] = useState(null);
@@ -29,7 +23,10 @@ export const useGetMyCollections = ({ owner }: { owner: string }) => {
       .then((data) => {
         console.log(data);
         setToothBrushings(data);
-      });
+        setIsPending(false);
+      })
+      .catch((e) => setError(e))
+      .finally();
   }, [owner]);
 
   return {
