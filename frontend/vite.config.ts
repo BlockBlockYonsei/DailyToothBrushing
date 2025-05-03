@@ -9,6 +9,11 @@ export default defineConfig({
   build: {
     chunkSizeWarningLimit: 2000, // 단위: KB (기본값: 500KB)
   },
+  preview: {
+    port: 4173, // 기본값
+    host: true, // 외부 접근 허용
+    allowedHosts: ["dailytoothbrushing.onrender.com"], // <== 이 줄 추가
+  },
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
