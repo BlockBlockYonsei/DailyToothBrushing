@@ -1,11 +1,10 @@
 /// Module: contract
-module contract::contract;
+module contract::toothbruhsing;
 
 
 use sui::clock::Clock;
-use sui::nitro_attestation::timestamp;
 
-public struct ToothBrushing has key {
+public struct ToothBruhsing has key {
   id: UID,
   timestamp: u64
 }
@@ -14,7 +13,7 @@ public struct ToothBrushing has key {
 entry fun brush_my_teeth(clock: &Clock, ctx: &mut TxContext) {
   let timestamp = clock.timestamp_ms();
 
-  let tooth_brushing = ToothBrushing {
+  let tooth_brushing = ToothBruhsing {
     id: object::new(ctx),
     timestamp
   };
