@@ -162,9 +162,59 @@ function App() {
             </div>
             <RainbowBox></RainbowBox>
             <div className="flex justify-between h-[200px]">
-              <img className="w-auto h-full" src="/info1.png" />
-              <img className="w-auto h-full" src="/info2.png" />
-              <img className="w-auto h-full" src="/info3.png" />
+              <img
+                className="border-2 border-black w-auto h-full"
+                src="/info1.png"
+              />
+              <img
+                className="border-2 border-black w-auto h-full"
+                src="/info2.png"
+              />
+              <img
+                className="border-2 border-black w-auto h-full"
+                src="/info3.png"
+              />
+            </div>
+            <div>
+              <h2 className="font-semibold">
+                The Proper Way to Brush Your Teeth
+              </h2>
+              <p>
+                Brushing your teeth helps remove plaque and bacteria that
+                continually form on teeth and around the gumline. When not
+                removed regularly, plaque can lead to cavities, tooth decay, and
+                even periodontal disease. A proper brushing technique can
+                protect teeth from decay and disease. Follow these steps:
+              </p>
+              <ul className="list-disc list-inside">
+                <li>
+                  Step 1: Start with the outer surfaces of your teeth. Take your
+                  time! Gently brush upper and then lower teeth. Going tooth by
+                  tooth can help you slow down and not miss any spots.
+                </li>
+                <li>
+                  Step 2: Tilt your brush at a 45° angle. Brush against the
+                  gumline to get rid of any trapped plaque or food debris.
+                  Gently move the brush back and forth using short, tooth-wide
+                  strokes.
+                </li>
+                <li>
+                  Step 3: Brush the inner surface of your teeth. Because the
+                  insides of your teeth are not as visible, skipping them is
+                  tempting –but these inner surfaces are just as vulnerable to
+                  plaque. Use a 45° angle to brush back and forth to clean the
+                  inside surfaces of the teeth.
+                </li>
+                <li>
+                  Step 4: Clean the chewing surfaces of your teeth. Don't forget
+                  to use short back and forth strokes to brush the tops of your
+                  back teeth, where food can easily get trapped.
+                </li>
+                <li>
+                  Step 5: Brush your tongue. For fresher breath, brush your
+                  tongue to remove odor-causing bacteria.
+                </li>
+              </ul>
             </div>
           </div>
         )}
@@ -180,7 +230,7 @@ function RainbowBox() {
   return (
     <>
       <div
-        className="min-h-[600px] w-full mx-auto my-12 p-8 rounded-lg 
+        className="min-h-[600px] w-full mx-auto p-8 rounded-lg 
                       bg-gradient-to-b from-red-500  via-yellow-300 
                      to-violet-500 
                       text-white text-[1.2em] leading-tight"
