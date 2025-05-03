@@ -1,9 +1,10 @@
-/*
 /// Module: contract
 module contract::contract;
-*/
 
-// For Move coding conventions, see
-// https://docs.sui.io/concepts/sui-move-concepts/conventions
+
+public struct ToothBrushing has key {
+  id: UID,
+  
+}
 
 
