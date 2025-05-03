@@ -34,6 +34,10 @@ function App() {
   }, [digest]);
 
   useEffect(() => {
+    console.log("digest", noCount);
+  }, [noCount]);
+
+  useEffect(() => {
     // console.log("wallet", wallets);
     console.log("account", account?.chains);
   }, [wallets, account]);
@@ -175,11 +179,6 @@ export default App;
 function RainbowBox() {
   return (
     <>
-      <link
-        href="https://fonts.googleapis.com/css2?family=Playwrite+RO:wght@100..400&display=swap"
-        rel="stylesheet"
-      />
-
       <div
         className="min-h-[600px] w-full mx-auto my-12 p-8 rounded-lg 
                       bg-gradient-to-b from-red-500  via-yellow-300 
