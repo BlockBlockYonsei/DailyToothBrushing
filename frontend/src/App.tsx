@@ -108,7 +108,7 @@ function App() {
             </div>
             <div className="flex flex-col justify-center items-center -space-y-5">
               <img className="h-auto w-full z-10" src="/clean-up.png" />
-              <div className="bg-slate-700 border-2 w-[800px] py-10 border-black z-100 flex justify-center items-center">
+              <div className="bg-slate-700 border-2 p-5 border-black z-100 flex justify-center items-center">
                 <div className="flex flex-col justify-center items-center ">
                   <p className="text-4xl font-bold ">
                     <span className="text-white">Did you </span>
