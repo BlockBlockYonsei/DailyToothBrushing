@@ -136,7 +136,28 @@ function App() {
               </div>
               <img className="h-auto w-full z-10" src="/clean-down.png" />
             </div>
+            <div>
+              <p className="text-red-500">
+                Tooth brushing is the act of scrubbing teeth with a toothbrush
+                equipped with toothpaste. Interdental cleaning (with floss or an
+                interdental brush) can be useful with tooth brushing, and
+                together these two activities are the primary means of cleaning
+                teeth, one of the main aspects of oral hygiene.[1] The
+                recommended amount of time for tooth brushing is two minutes
+                each time for two times a day.[2]
+              </p>
+            </div>
+            <div className="flex justify-between h-[250px]">
+              <img className="w-auto h-full" src="/brush1.png" />
+              <img className="w-auto h-full" src="/brush2.png" />
+              <img className="w-auto h-full" src="/brush3.png" />
+            </div>
             <RainbowBox></RainbowBox>
+            <div className="flex justify-between h-[200px]">
+              <img className="w-auto h-full" src="/info1.png" />
+              <img className="w-auto h-full" src="/info2.png" />
+              <img className="w-auto h-full" src="/info3.png" />
+            </div>
           </div>
         )}
       </div>
@@ -156,7 +177,7 @@ function RainbowBox() {
       />
 
       <div
-        className="min-h-[600px] w-4/5 mx-auto my-12 p-8 rounded-lg 
+        className="min-h-[600px] w-full mx-auto my-12 p-8 rounded-lg 
                       bg-gradient-to-b from-red-500  via-yellow-300 
                      to-violet-500 
                       text-white text-[1.2em] leading-tight"
