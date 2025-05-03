@@ -127,10 +127,13 @@ function App() {
                       // onClick={() => navigate("/another")}
                       onClick={() => {
                         setNoCount((prev) => prev + 1);
-                        window.open("/another", "_blank");
+                        window.open(
+                          "https://www.health.harvard.edu/blog/one-more-reason-to-brush-your-teeth-202402263019",
+                          "_blank"
+                        );
                       }}
                     >
-                      No {noCount}
+                      No
                     </Button>
                   </div>
                 </div>
