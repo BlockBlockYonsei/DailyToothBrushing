@@ -7,12 +7,16 @@ import {
   useWallets,
 } from "@mysten/dapp-kit";
 import { useLocation } from "react-router-dom";
+import { Link } from "lucide-react";
+import { navigateWithQuery } from "./lib/utils";
+import { useNavigate } from "react-router-dom";
 
 function App() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [noCount, setNoCount] = useState(0);
   const account = useCurrentAccount();
   const wallets = useWallets();
   const location = useLocation();
+  const navigate = useNavigate();
 
   const { mutate: disconnect } = useDisconnectWallet();
   const { mutate: connect } = useConnectWallet();
@@ -48,7 +52,10 @@ function App() {
           <Button className="hover:bg-amber-200 active:bg-amber-300 w-45 border-2 border-black cursor-pointer">
             Yes
           </Button>
-          <Button className="hover:bg-amber-200 active:bg-amber-300 w-45 border-2 border-black cursor-pointer">
+          <Button
+            className="hover:bg-amber-200 active:bg-amber-300 w-45 border-2 border-black cursor-pointer"
+            onClick={() => navigate("/target-path")}
+          >
             No
           </Button>
         </div>
