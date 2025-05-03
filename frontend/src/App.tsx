@@ -56,7 +56,7 @@ function App() {
       <div>
         <nav>
           {account ? (
-            <div className="flex flex-col items-center">
+            <div className="flex flex-col items-center py-2">
               <p className="text-center text-lg font-bold">{account.label}</p>
               <Button
                 className="w-45 bg-black text-white hover:bg-blue-200"
@@ -66,7 +66,7 @@ function App() {
               </Button>
             </div>
           ) : (
-            <div className="mx-auto w-5/6">
+            <div className="flex flex-col items-center justify-center h-screen">
               <Button
                 className="w-45 border-2 border-black bg-white text-black hover:bg-blue-200"
                 onClick={() => connect({ wallet: wallets[0] })}
@@ -105,7 +105,6 @@ function App() {
                     <p className="text-4xl text-white">/</p>
                     <Button
                       className="text-4xl text-cyan-600 active:bg-amber-300 cursor-pointer"
-                      // onClick={() => navigate("/another")}
                       onClick={() => {
                         setNoCount((prev) => prev + 1);
                         window.open(
