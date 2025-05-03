@@ -2,19 +2,19 @@ import { getFullnodeUrl, SuiClient } from "@mysten/sui/client";
 import { useEffect, useState } from "react";
 
 export const useGetMyCollections = ({ owner }: { owner: string }) => {
-  const [toothbrusings, setToothBrushings] = useState<any>(null);
+  const [toothbruhsings, setToothBruhsings] = useState<any>(null);
   const [isPending, setIsPending] = useState<boolean>(true);
   const [error, setError] = useState(null);
 
   const PACKAGE_ID = import.meta.env.VITE_PACKAGE_ID;
-  const COL_CAP_TYPE = `${PACKAGE_ID}::contract::toothbrusing`;
+  const TYPE = `${PACKAGE_ID}::toothbruhsing::ToothBruhsing`;
 
   const client = new SuiClient({ url: getFullnodeUrl("testnet") });
   useEffect(() => {
     client
       .getOwnedObjects({
         owner,
-        filter: { StructType: COL_CAP_TYPE },
+        filter: { StructType: TYPE },
         options: {
           showType: true,
           showContent: true,
@@ -22,7 +22,7 @@ export const useGetMyCollections = ({ owner }: { owner: string }) => {
       })
       .then((data) => {
         console.log(data);
-        setToothBrushings(data);
+        setToothBruhsings(data);
         setIsPending(false);
       })
       .catch((e) => setError(e))
@@ -30,7 +30,7 @@ export const useGetMyCollections = ({ owner }: { owner: string }) => {
   }, [owner]);
 
   return {
-    toothbrusings,
+    toothbruhsings,
     isPending,
     error,
   };
