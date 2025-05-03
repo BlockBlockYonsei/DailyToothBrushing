@@ -1,4 +1,4 @@
-import { useState } from "react";
+// import { useState } from "react";
 import { Button } from "./components/ui/button";
 import {
   useConnectWallet,
@@ -6,17 +6,15 @@ import {
   useDisconnectWallet,
   useWallets,
 } from "@mysten/dapp-kit";
-import { useLocation } from "react-router-dom";
-import { Link } from "lucide-react";
-import { navigateWithQuery } from "./lib/utils";
-import { useNavigate } from "react-router-dom";
+// import { useLocation } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 function AnotherPage() {
-  const [noCount, setNoCount] = useState(0);
+  // const [noCount, setNoCount] = useState(0);
   const account = useCurrentAccount();
   const wallets = useWallets();
-  const location = useLocation();
-  const navigate = useNavigate();
+  // const location = useLocation();
+  // const navigate = useNavigate();
 
   const { mutate: disconnect } = useDisconnectWallet();
   const { mutate: connect } = useConnectWallet();
@@ -29,7 +27,7 @@ function AnotherPage() {
             <div className="flex flex-col items-center">
               <p className="text-center text-lg font-bold">{account.label}</p>
               <Button
-                className="w-45 bg-black text-white hover:bg-white hover:bg-blue-200"
+                className="w-45 bg-black text-white hover:bg-blue-200"
                 onClick={() => disconnect()}
               >
                 Disconnect

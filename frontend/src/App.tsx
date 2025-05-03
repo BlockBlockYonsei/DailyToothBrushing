@@ -7,14 +7,14 @@ import {
   useWallets,
   useSignAndExecuteTransaction,
 } from "@mysten/dapp-kit";
-import { useLocation } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+// import { useLocation } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 import { Transaction } from "@mysten/sui/transactions";
-import { getFullnodeUrl, SuiClient } from "@mysten/sui/client";
-import { WebCryptoSigner } from "@mysten/signers/webcrypto";
+// import { getFullnodeUrl, SuiClient } from "@mysten/sui/client";
+// import { WebCryptoSigner } from "@mysten/signers/webcrypto";
 
-const client = new SuiClient({ url: getFullnodeUrl("testnet") });
+// const client = new SuiClient({ url: getFullnodeUrl("testnet") });
 
 function App() {
   const [noCount, setNoCount] = useState(0);
@@ -22,8 +22,8 @@ function App() {
 
   const account = useCurrentAccount();
   const wallets = useWallets();
-  const location = useLocation();
-  const navigate = useNavigate();
+  // const location = useLocation();
+  // const navigate = useNavigate();
 
   const { mutate: disconnect } = useDisconnectWallet();
   const { mutate: connect } = useConnectWallet();
@@ -80,7 +80,7 @@ function App() {
             <div className="flex flex-col items-center">
               <p className="text-center text-lg font-bold">{account.label}</p>
               <Button
-                className="w-45 bg-black text-white hover:bg-white hover:bg-blue-200"
+                className="w-45 bg-black text-white hover:bg-blue-200"
                 onClick={() => disconnect()}
               >
                 Disconnect
@@ -157,8 +157,8 @@ function RainbowBox() {
 
       <div
         className="min-h-[600px] w-4/5 mx-auto my-12 p-8 rounded-lg 
-                      bg-gradient-to-b from-red-500 via-orange-400 via-yellow-300 
-                      via-green-400 via-blue-400 via-indigo-400 to-violet-500 
+                      bg-gradient-to-b from-red-500  via-yellow-300 
+                     to-violet-500 
                       text-white text-[1.2em] leading-tight"
       >
         <h1 className="text-black text-4xl text-center mb-4 font-playwrite">
