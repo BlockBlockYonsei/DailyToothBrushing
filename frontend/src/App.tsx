@@ -38,7 +38,12 @@ function App() {
 
   useEffect(() => {
     if (toothbruhsings && toothbruhsings.length > 0) {
-      setRecentToothBruhsing(toothbruhsings[0]);
+      const recent = toothbruhsings.sort(
+        (a, b) =>
+          Number(b.content.fields.timestamp) -
+          Number(a.content.fields.timestamp)
+      )[0];
+      setRecentToothBruhsing(recent);
     }
   }, [toothbruhsings]);
 
@@ -148,7 +153,10 @@ function App() {
             </div>
             <div className="flex flex-col justify-center items-center -space-y-5">
               {isTeethClean ? (
-                <img className="h-60 w-full z-10" src="/clean-up.png" />
+                <img
+                  className="h-60 w-full z-10 object-cover object-top"
+                  src="/clean-up.png"
+                />
               ) : (
                 <img
                   className="h-60 w-full z-10 object-cover object-top"
@@ -187,7 +195,10 @@ function App() {
               <div className="relative">
                 {isTeethClean ? (
                   <div>
-                    <img className="h-60 w-full z-10" src="/clean-down.png" />
+                    <img
+                      className="h-60 w-full z-10 object-cover object-bottom"
+                      src="/clean-down.png"
+                    />
                     <div className="absolute top-0 left-0 flex justify-center items-center h-full w-full">
                       <div className="text-4xl font-bold">
                         <span className="text-amber-700 ">
