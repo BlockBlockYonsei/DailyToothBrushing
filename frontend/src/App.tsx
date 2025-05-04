@@ -135,7 +135,7 @@ function App() {
                 className="w-45 border-2 border-black bg-white text-black hover:bg-blue-200"
                 onClick={() => connect({ wallet: wallets[0] })}
               >
-                Connect wallet
+                Let's Go To Brush Your Teeth! 🧚🏻‍♂️🦷🦷🦷
               </Button>
             </div>
           )}
