@@ -132,7 +132,7 @@ function App() {
           ) : (
             <div className="flex flex-col items-center justify-center h-screen">
               <Button
-                className="w-45 border-2 border-black bg-white text-black hover:bg-blue-200"
+                className="w-80 cursor-pointer border-2 border-black bg-white text-black hover:bg-blue-200"
                 onClick={() => connect({ wallet: wallets[0] })}
               >
                 Let's Go To Brush Your Teeth! 🧚🏻‍♂️🦷🦷🦷
